@@ -1,0 +1,2 @@
+#!/bin/sh
+srun --partition=interactive10 --gres=gpu:1g.10gb:1 --ntasks=1 --cpus-per-task=4 run.py --time=1:00:00 
