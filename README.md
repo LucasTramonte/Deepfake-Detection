@@ -2,42 +2,55 @@
 
 ![](./images/automathon.png)
 
-Bienvenue, ce hackathon vise à vous former à la Detection de DeepFakes
+Welcome to our solution for the deepfake detection hackathon offered by CentraleSupélec's IA automatans association!
 
+- We used the EfficientNet model to train a 2D convulational network:
+
+https://pytorch.org/vision/stable/models/generated/torchvision.models.efficientnet_b0.html#torchvision.models.efficientnet_b0
+
+- We did a frame-by-frame detection
+
+- In pre-processing, we cropped the faces using box detection and the MTCNN method. 
+
+- We chose to use nn.CrossEntropyLoss() instead of nn.MSELoss()
+
+Link to the competition :
+
+https://www.kaggle.com/competitions/automathon-deepfake/overview
 
 ## Setup DGX
 
-Une fois que nous vous avons donné vos accès DGX et vos clés SSH dans le dossier `compteX`
+Once we've given you your DGX access and SSH keys in the `accountX` folder
 
-Il faut suivre les instructions suivantes:
+follow these instructions:
 
-1. Lancer le script
+1. Run the script
 
 ```bash
 cd compte8
 python3 dgx_setup.py
 ```
 
-*Note: le numero 8 est un exemple, mettez votre numero d'equipe*
+*Note: number 8 is an example, please enter your team number*.
 
-Le script tournera et vous donnera votre mot de passe.
+The script will run and give you your password.
 
 ```
 Your password is jbk47rgdfEFH
 ```
 
-*Note: ce mot de passe est purement ficitf*
+*Note: this password is purely fictitious*.
 
-2. Essayez de vous connecter
+2. Try to connect
 
 ```bash
 ssh dgx
 ```
-A ce moment il vous demandera votre mot de passe
+You will then be asked for your password.
 
-3. Changez votre mot de passe de compte
+3. Change your account password
 
-Une fois connectés changez votre mot de passe a quelquechose d'autre
+Once logged in, change your password to something else
 
 ```bash
 passwd
@@ -47,50 +60,50 @@ New password: <PASSWORD>
 
 ## Setup Local
 
-1. Connectez vous à Github
+1. Connect to Github
 
-Après vous être assurés que nous avons bel et bien pris votre compte Github, cliquez sur le bouton ci-dessous pour ouvrir une nouvelle fenetre de navigation dans laquelle vous pouvez ensuite se connecter a votre compte Github.
+Once you've checked that we've taken your Github account, click on the button below to open a new browser window in which you can connect to your Github account.
 
-[![Connectez vous a Github](https://img.shields.io/badge/-Connect%20to%20Github-black?style=flat&logoColor=white&color=blueviolet)](https://github.com/)
+[![Login to Github](https://img.shields.io/badge/-Connect%20to%20Github-black?style=flat&logoColor=white&color=blueviolet)](https://github.com/)
 
-2. Creez vos propres clés SSH
+2. Create your own SSH keys
 
-Si vous n'avez pas encore de clé SSH executez:
+If you don't already have an SSH key, run:
 
 ```bash
 ssh-keygen
 ```
 
-3. Mettez vos clés SSH personelles dans votre compte Github
+3. Put your personal SSH keys in your Github account
 
 [![Github SSH Keys](https://img.shields.io/badge/-Github%20SSH%20Keys-black?style=flat&logoColor=white&color=blueviolet)](https://github.com/settings/keys)
 
-vous pouvez trouver vos clés avec la commande suivante:
+you can find your keys with the following command:
 
 ```bash
 cat ~/.ssh/id_rsa.pub
 ```
 
-4. Clonez le repo
+4. Clone the repository
 
 ```
 git clone git@github.com:Automatants/automathon-2024.git
 ```
 
-5. Rentrez dans l'environnement virtuel
+5. Step into the virtual environment
 
 ```bash
 cd automatonhackathon-2024
 source .venv/bin/activate
 ```
 
-À tout moment, pour ressortir de  l'environnement virtuel executez:
+At any time, to exit the virtual environment execute:
 
 ```bash
 deactivate
 ```
 
-5. Installez les dependances du projet
+5. Install project dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -98,13 +111,13 @@ pip install -r requirements.txt
 
 ## Usage
 
-Le repo possède 2 fichiers:
+The repo has 2 files:
 
-1. Un `baseline.ipynb` qui sert à expliquer des details du dataset, et sert au tests locaux
+1. A `baseline.ipynb` which is used to explain dataset details, and for local testing.
 
-2. un `run.py` qui sert a executer le projet sur DGX
+2. a `run.py` which is used to run the project on DGX.
 
-Pour faire tourner le run.py, connectez vous à la DGX:
+To run run.py, connect to DGX:
 
 ```bash
 ssh dgx
